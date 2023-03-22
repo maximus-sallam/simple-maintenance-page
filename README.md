@@ -1,4 +1,4 @@
-# Tad's really simple maintenance page
+# Maximus Sallam's really simple maintenance page
 
 ![light](https://user-images.githubusercontent.com/2788192/122275774-5f336080-cee4-11eb-9ea8-7a2430a2a018.png)
 ![dark](https://user-images.githubusercontent.com/2788192/122275831-6eb2a980-cee4-11eb-9a40-9f380b3ef499.png)
