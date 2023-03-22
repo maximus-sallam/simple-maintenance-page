@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+   #Redirect all of the traffic to the temporary landing page
+   RewriteEngine on
+   RewriteCond %{REQUEST_URI} !.*index\.html
+   RewriteRule (.*) /index.html [R=302,L]
+</IfModule>
