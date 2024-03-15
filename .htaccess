@@ -1,6 +1,19 @@
 <IfModule mod_rewrite.c>
-   #Redirect all of the traffic to the temporary landing page
-   RewriteEngine on
-   RewriteCond %{REQUEST_URI} !.*index\.html
-   RewriteRule (.*) /index.html [R=302,L]
+    RewriteEngine on
+
+    # Redirect all traffic to HTTPS
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+    # Redirect all traffic to the temporary landing page
+    RewriteCond %{REQUEST_URI} !.*index\.html$
+    RewriteRule (.*) /index.html [R=302,L]
+
+    # Handle permalinks
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
 </IfModule>
